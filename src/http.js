@@ -1,24 +1,6 @@
-const http = require("http");
-const url = require("url");
-const qs = require("querystring");
-const getUserData = userId => ({
-  userId,
-  name: "node demo",
-  date: new Date().getDate()
-});
-http
-  .createServer((req, res) => {
-    res.setHeader("Content-Type", "application/json;charset=utf-8");
-    const reqUrl = url.parse(req.url);
-    if (reqUrl.pathname === "/index") {
-      const uid = qs.parse(reqUrl.query).userId;
-      const result = JSON.stringify(getUserData(uid));
-      res.end(result);
-    } else {
-      res.writeHead(404);
-      res.end("NotFound");
-    }
-  })
-  .listen(8080, () => {
-    console.log("Listened in port 8080");
-  });
+const http = require('http')
+let resContent;
+http.get('http://www.baidu.com/sugrec?prod=pc_his&from=pc_web&json=1&sid=1468_21082_29522_29720_29567_29220_26350&hisdata=%5B%7B%22time%22%3A1569482815%2C%22kw%22%3A%22webpack%20splitchunks%20%E5%A4%B1%E6%95%88%22%7D%2C%7B%22time%22%3A1569482870%2C%22kw%22%3A%22webpack%20splitchunks%20ts%22%7D%2C%7B%22time%22%3A1569482884%2C%22kw%22%3A%22webpack%20splitchunks%20typescript%22%7D%2C%7B%22time%22%3A1569485062%2C%22kw%22%3A%22%E6%8E%98%E9%87%91%22%2C%22fq%22%3A8%7D%2C%7B%22time%22%3A1569485403%2C%22kw%22%3A%22node.js%20%E5%AE%9E%E6%88%98%22%7D%2C%7B%22time%22%3A1569485485%2C%22kw%22%3A%22%E6%8E%A8%E8%8D%90%E7%9A%84node.js%E6%95%99%E7%A8%8B%22%7D%2C%7B%22time%22%3A1569486470%2C%22kw%22%3A%22%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BAnode.js%22%2C%22fq%22%3A2%7D%2C%7B%22time%22%3A1569491250%2C%22kw%22%3A%22%E7%9F%A5%E4%B9%8E%22%2C%22fq%22%3A5%7D%2C%7B%22time%22%3A1569548066%2C%22kw%22%3A%22process.argv%22%7D%2C%7B%22time%22%3A1569552080%2C%22kw%22%3A%22vs%20code%20%E6%89%93%E5%BC%80%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA%22%7D%5D&req=2&csor=0&cb=jQuery110208285435851352303_1569552742674&_=1569552742675',(res) => {
+    resContent = res;
+    console.log(resContent)
+})
